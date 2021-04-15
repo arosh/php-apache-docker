@@ -8,6 +8,9 @@ export APACHE_RUN_USER=apache
 export APACHE_RUN_GROUP=apache
 
 groupadd -g ${APACHE_GID} -o ${APACHE_RUN_GROUP}
+# Use -l to avoid faillog/lastlog as described in some documentations.
+# * https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
+# * https://stackoverflow.com/a/48770482
 useradd -M -g ${APACHE_RUN_GROUP} -u ${APACHE_UID} -o -l -s /usr/sbin/nologin ${APACHE_RUN_USER}
 
 exec apache2-foreground
