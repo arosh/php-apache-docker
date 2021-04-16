@@ -1,6 +1,12 @@
+As described in [Running as an arbitrary user](https://hub.docker.com/_/php), `--user` is All You Need.
+
+```shell
+docker run --rm -p 8080:80 -v $(pwd):/var/www/html --user 1234:2345 --sysctl net.ipv4.ip_unprivileged_port_start=0 php:5.6.40-apache-stretch
+```
+
 # php-apache-docker
 
-Run PHP + Apache with the specified UID/GID at runtime
+~~Run PHP + Apache with the specified UID/GID at runtime~~
 
 ## Usage
 
